@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+PLEASE
 @section('content')
 <style>
     tr:nth-child(even){background-color: #f2f2f2}
