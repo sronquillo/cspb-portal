@@ -18,13 +18,13 @@
                                 <input id="IDno" type="text" class="form-control" name="IDno" value="{{ old('IDno') }}">
 
                                 @if ($errors->has('IDno'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('IDno') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('IDno') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-                        
+
                         {{--First Name --}}
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                             <label for="firstname" class="col-md-4 control-label">First Name</label>
@@ -33,13 +33,13 @@
                                 <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}">
 
                                 @if ($errors->has('firstname'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('firstname') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('firstname') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-                        
+
                         {{--Middle Name --}}
                         <div class="form-group">
                             <label for="middlename" class="col-md-4 control-label">Middle Name</label>
@@ -47,7 +47,7 @@
                                 <input id="middlename" type="text" class="form-control" name="middlename" value="{{ old('middlename') }}">
                             </div>
                         </div>
-                        
+
                         {{--Last Name --}}
                         <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
                             <label for="lastname" class="col-md-4 control-label">Last Name</label>
@@ -56,35 +56,35 @@
                                 <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}">
 
                                 @if ($errors->has('lastname'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lastname') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('lastname') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-                        
-<!--                        {{--Status--}}
-                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                            <label for="status" class="col-md-4 control-label">Status</label>
-                            
-                            <div class="col-md-6">
-                                <select name="status" class="form-control">
-                                    <option id="status" name="status" value=NULL></option>
-                                    <option id="status" name="status" value="Student">Student</option>
-                                    <option id="status" name="status" value="Employee">Employee</option>
-                                </select>                            
-                                @if ($errors->has('status'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('status') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>-->
-                        
+
+                        <!--                        {{--Status--}}
+                                                <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                                                    <label for="status" class="col-md-4 control-label">Status</label>
+                                                    
+                                                    <div class="col-md-6">
+                                                        <select name="status" class="form-control">
+                                                            <option id="status" name="status" value=NULL></option>
+                                                            <option id="status" name="status" value="Student">Student</option>
+                                                            <option id="status" name="status" value="Employee">Employee</option>
+                                                        </select>                            
+                                                        @if ($errors->has('status'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('status') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>-->
+
                         {{--User Group--}}
                         <div class="form-group{{ $errors->has('userLevel') ? ' has-error' : '' }}">
                             <label for="userLevel" class="col-md-4 control-label">User Group</label>
-                            
+
                             <div class="col-md-6">
                                 <select name="userLevel" class="form-control">
                                     <option id="userLevel" name="userLevel" value="1">Student</option>
@@ -98,13 +98,13 @@
                                     <option id="userLevel" name="userLevel" value="5">Rector</option>
                                 </select>                            
                                 @if ($errors->has('userLevel'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('userLevel') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('userLevel') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-                
+
                         {{--Email--}}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
@@ -113,9 +113,9 @@
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
@@ -128,13 +128,13 @@
                                 <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-                        
+
                         {{--Password Confirmation--}}
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
@@ -143,20 +143,20 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-                        
+
                         {{--Hidden--}}
                         <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
                             <div class="col-md-6">
                                 <input id="is_active" type="hidden" class="form-control" name="is_active" value="1">
                             </div>
                         </div>
-                        
+
                         {{--Submit--}}
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | Application Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the controller to call when that URI is requested.
+  |
+ */
 
 Route::get('/', 'HomeController@index');
 //Route::post ('/check', function (Request $request)
@@ -33,8 +33,8 @@ Route::get('/announcements', 'HomeController@announcements');
 Route::get('/announcements/{input}/', 'HomeController@update_announcement');
 Route::get('/approved/announcements/{input}/', 'HomeController@approved_announcement');
 Route::get('/pending/announcements', 'HomeController@pending_announcement');
-Route::get('/create/announcements', function(){
-   return view('createannouncements');
+Route::get('/create/announcements', function() {
+    return view('createannouncements');
 });
 Route::get('/delete/announcements/{input}', 'HomeController@delete_announcement');
 
@@ -45,25 +45,25 @@ Route::get('/approved/notifications/{input}/', 'HomeController@approved_notifica
 Route::get('/pending/notifications', 'HomeController@pending_notification');
 Route::get('/view/notifications', 'HomeController@allnotifications');
 Route::get('/approved/notifications', 'HomeController@allapprovednotifications');
-Route::get('/create/notifications', function(){
-   return view('createnotifications');
+Route::get('/create/notifications', function() {
+    return view('createnotifications');
 });
 Route::get('/delete/notifications/{input}', 'HomeController@delete_notification');
 
 //grades
 Route::get('/grades', 'HomeController@grades');
 Route::get('/grades/{input}/', 'HomeController@viewgrades');
-Route::get('/view/grades', function(){
-   return view('viewgrades');
+Route::get('/view/grades', function() {
+    return view('viewgrades');
 });
 Route::post('/list/view/grades', 'HomeController@viewgradeslist');
-Route::get ('/modify/grades/{input}', 'HomeController@modifyGrades');
+Route::get('/modify/grades/{input}', 'HomeController@modifyGrades');
 Route::post('/confirm/modify', 'HomeController@confirmModifyGrades');
 Route::post('/add/grades', 'HomeController@addGrades');
 //lock grades
-Route::post ('/unlock', 'HomeController@unlockGrades');
-Route::post ('/lock', 'HomeController@lockGrades');
-Route::get ('/all/unlock', 'HomeController@allUnlockGrades');
+Route::post('/unlock', 'HomeController@unlockGrades');
+Route::post('/lock', 'HomeController@lockGrades');
+Route::get('/all/unlock', 'HomeController@allUnlockGrades');
 
 
 //users
@@ -75,8 +75,8 @@ Route::get('/modify/users/{input}', 'HomeController@modusers');
 //others
 Route::get('/activate/{input}', 'userActive@activate');
 Route::get('/deactivate/{input}', 'userActive@deactivate');
-Route::get('/users', function(){
-   return view('users');
+Route::get('/users', function() {
+    return view('users');
 });
 
 Route::post('/submit', 'HomeController@submit');
