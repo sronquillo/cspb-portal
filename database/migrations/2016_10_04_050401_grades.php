@@ -21,7 +21,7 @@ class Grades extends Migration
             $table->integer('q2');
             $table->integer('q3');
             $table->integer('q4');
-            $table->integer('is_approveds');
+            $table->integer('is_approved');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -23,7 +23,7 @@
                             </tr>
                             @foreach($notification as $notifications)
                             <tr style="border-bottom: 1px solid #0d5302; line-height: 40px">
-                                <td width="20%"><div align="Left">{{$notifications->created}}</div></td>
+                                <td width="20%"><div align="Left">{{$notifications->created_at}}</div></td>
                                 <td width="50%"><div align="Left"><a href="{{$notifications->anID}}">{{$notifications->subject}}</a></div></td>
                                 <td width="30%"><div align="Left">{{$notifications->firstname}} {{$notifications->lastname}}</div></td>
                             </tr>

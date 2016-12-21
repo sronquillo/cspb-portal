@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <th style="border-bottom: 1px solid #0d5302">Date:</th>
-                    <td style="border-bottom: 1px solid #0d5302">{{$view_announcements->created}}</td>
+                    <td style="border-bottom: 1px solid #0d5302">{{$view_announcements->created_at}}</td>
                 </tr>
                 <tr>
                     <th style="border-bottom: 1px solid #0d5302">Subject:</th>
@@ -39,19 +39,7 @@
                     <td><div style="text-align: justify"><p>{{$view_announcements->message}}<br>
 
                                 @if ($view_announcements->image!=null)
-                                <img src='/upload-images/{{$view_announcements->image}}' width="70%"></br>
-                                @if ($view_announcements->video!=null)
-                                <video width="320" height="240" controls>
-                                    <source src="/videos/{{$view_announcements->video}}" type="video/mp4">
-                                </video>
-                                @else
-                                @endif
-                                @elseif ($view_announcements->video!=null)
-                                <video width="320" height="240" controls>
-                                    <source src="/upload-videos/{{$view_announcements->video}}" type="video/mp4">
-                                </video>    
-                                @else
-                                </tr>
+                                <img src='/upload-images/{{$view_announcements->image}}' width="70%"></br> 
                                 @endif
 
                                 @endforeach

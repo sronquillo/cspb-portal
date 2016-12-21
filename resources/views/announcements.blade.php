@@ -29,7 +29,7 @@
                             </tr>
                             @foreach($announcement as $announcements)
                             <tr style="border-bottom: 1px solid #0d5302; line-height: 40px">
-                                <td width="20%"><div align="Left">{{$announcements->created}}</div></td>
+                                <td width="20%"><div align="Left">{{$announcements->created_at}}</div></td>
                                 <td width="40%"><div align="Left"><a href="{{$announcements->anID}}">{{$announcements->subject}}</a></div></td>                                        
                                 @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==5)
                                 <td width="25%"><div align="Left">{{$announcements->firstname}} {{$announcements->lastname}}</div></td>

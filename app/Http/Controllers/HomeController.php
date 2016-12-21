@@ -26,7 +26,7 @@ class HomeController extends Controller {
                 ->where('announcementNotif.type', '=', 0)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.recipient_userLevel', '=', 0)
-                ->orderBy('announcementNotif.created', 'desc')
+                ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
         return view('announcements', compact('announcement'));
     }
@@ -50,7 +50,7 @@ class HomeController extends Controller {
                 ->where('announcementNotif.type', '=', 1)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.recipient_userLevel', '=', $userLevel)
-                ->orderBy('announcementNotif.created', 'desc')
+                ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
 
         return view('notifications', compact('notification'));
@@ -62,7 +62,7 @@ class HomeController extends Controller {
                 ->where('announcementNotif.type', '=', 1)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.is_approved', '=', 1)
-                ->orderBy('announcementNotif.created', 'desc')
+                ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
 
         return view('update_notifications', compact('notification'));
@@ -74,7 +74,7 @@ class HomeController extends Controller {
                 ->where('announcementNotif.type', '=', 1)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.is_approved', '=', 1)
-                ->orderBy('announcementNotif.created', 'desc')
+                ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
 
         return view('update_notifications', compact('notification'));
@@ -222,7 +222,7 @@ class HomeController extends Controller {
             'is_approved' => $is_approved,
             'status' => $status,
             'type' => $type,
-            'created' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s')
         ]);
 
         // Check if image file is a actual image or fake image
@@ -359,7 +359,7 @@ class HomeController extends Controller {
                     'image' => $filename,
                     'is_approved' => $is_approved,
                     'type' => $type,
-                    'created' => date('Y-m-d H:i:s')
+                    'created_at' => date('Y-m-d H:i:s')
         ]);
 
         // Check if image file is a actual image or fake image
@@ -409,7 +409,7 @@ class HomeController extends Controller {
                 ->where('announcementNotif.type', '=', 0)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.recipient_userLevel', '=', 0)
-                ->orderBy('announcementNotif.created', 'desc')
+                ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
         return view('pending_announcement', compact('announcement'));
     }
@@ -420,7 +420,7 @@ class HomeController extends Controller {
                 ->where('announcementNotif.is_approved', '=', 0)
                 ->where('announcementNotif.type', '=', 1)
                 ->where('announcementNotif.status', '=', 1)
-                ->orderBy('announcementNotif.created', 'desc')
+                ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
         return view('pending_notification', compact('notification'));
     }
