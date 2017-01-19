@@ -82,7 +82,3 @@ Route::get('/users', function() {
 Route::post('/submit', 'HomeController@submit');
 Route::post('/update', 'HomeController@update');
 Route::get('{anID}', 'HomeController@view_announcement');
-Route::get('/sean/{anID}', 'HomeController@view_announcement');
-
-
-

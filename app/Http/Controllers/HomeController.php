@@ -514,5 +514,4 @@ class HomeController extends Controller {
                     'contactno' => $x_contactno]);
         return redirect()->back();
     }
-
 }

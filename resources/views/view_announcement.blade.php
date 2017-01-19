@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <th style="border-bottom: 1px solid #0d5302">Date:</th>
-                    <td style="border-bottom: 1px solid #0d5302">{{$view_announcements->created_at}}</td>
+                    <td style="border-bottom: 1px solid #0d5302">{{ date('M d, Y (D) - g:i a',strtotime($view_announcements->created_at)) }}</td>
                 </tr>
                 <tr>
                     <th style="border-bottom: 1px solid #0d5302">Subject:</th>

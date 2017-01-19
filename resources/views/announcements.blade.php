@@ -17,11 +17,11 @@
                         {{ $announcement->links() }}
                         <table width="100%">
                             <tr style="border-bottom: 3px solid #0d5302">
-                                <th width="20%"><div align="Left">Date</div></th>
+                                <th width="30%"><div align="Left">Date</div></th>
                                 <th width="40%"><div align="Left">Subject</div></th>
 
                                 @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==5)
-                                <th width="25%"><div align="Left">From</div></th>
+                                <th width="15%"><div align="Left">From</div></th>
                                 <th width="15%"><div align="Left">Action</div></th>
                                 @else
                                 <th width="30%"><div align="Left">From</div></th>
@@ -29,10 +29,10 @@
                             </tr>
                             @foreach($announcement as $announcements)
                             <tr style="border-bottom: 1px solid #0d5302; line-height: 40px">
-                                <td width="20%"><div align="Left">{{$announcements->created_at}}</div></td>
+                                <td width="30%"><div align="Left">{{ date('M d, Y (D) - g:i a',strtotime($announcements->created_at)) }}</div></td>
                                 <td width="40%"><div align="Left"><a href="{{$announcements->anID}}">{{$announcements->subject}}</a></div></td>                                        
                                 @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==5)
-                                <td width="25%"><div align="Left">{{$announcements->firstname}} {{$announcements->lastname}}</div></td>
+                                <td width="15%"><div align="Left">{{$announcements->firstname}} {{$announcements->lastname}}</div></td>
                                 <td width="15%">
                                     <div align="Left">
                                         <a href='/announcements/{{$announcements->anID}}'>Update</a> |
