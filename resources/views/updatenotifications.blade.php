@@ -23,17 +23,25 @@
                                     <div class="col-md-7" style="padding-bottom: 10px">
                                         @if ($update_announcements->recipient_userLevel==1) Student
                                         @elseif ($update_announcements->recipient_userLevel==2) Teacher
-                                        @elseif ($update_announcements->recipient_userLevel==3) Academic Chairman, Academic Coordinator, Registrar, Finance
+                                        @elseif ($update_announcements->recipient_userLevel==31) Academic Chairman
+                                        @elseif ($update_announcements->recipient_userLevel==32) Academic Coordinator
+                                        @elseif ($update_announcements->recipient_userLevel==33) Registrar, Finance
+                                        @elseif ($update_announcements->recipient_userLevel==34) Finance
                                         @elseif ($update_announcements->recipient_userLevel==4) Secretary
-                                        @else Principal, Rector
+                                        @elseif ($update_announcements->recipient_userLevel==51) Principal
+                                        @else Rector
                                         @endif<br>
 
                                         <select name="recipient" class="form-horizontal">
                                             <option id="recipient" name="type" value=1>Student</option>
                                             <option id="recipient" name="type" value=2>Teacher</option>
-                                            <option id="recipient" name="type" value=3>Academic Chairman, Academic Coordinator, Registrar, Finance</option>
+                                            <option id="recipient" name="type" value=31>Academic Chairman</option>
+                                            <option id="recipient" name="type" value=32>Academic Coordinator</option>
+                                            <option id="recipient" name="type" value=33>Registrar</option>
+                                            <option id="recipient" name="type" value=34>Finance</option>
                                             <option id="recipient" name="type" value=4>Secretary</option>
-                                            <option id="recipient" name="type" value=5>Principal/Rector</option>
+                                            <option id="recipient" name="type" value=51>Principal</option>
+                                            <option id="recipient" name="type" value=52>Rector</option>
                                         </select>
                                     </div>
                                 </div>

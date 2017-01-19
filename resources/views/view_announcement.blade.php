@@ -27,9 +27,13 @@
                     @if ($view_announcements->recipient_userLevel==0) <td style="border-bottom: 1px solid #0d5302">All</td>
                     @elseif($view_announcements->recipient_userLevel==1) <td style="border-bottom: 1px solid #0d5302">Students</td>
                     @elseif ($view_announcements->recipient_userLevel==2) <td style="border-bottom: 1px solid #0d5302">Teachers</td>
-                    @elseif($view_announcements->recipient_userLevel==3) <td style="border-bottom: 1px solid #0d5302">Academic Chairman, Academic Coordinator, Registrar, Finance</td>
+                    @elseif($view_announcements->recipient_userLevel==31) <td style="border-bottom: 1px solid #0d5302">Academic Chairman</td>
+                    @elseif($view_announcements->recipient_userLevel==32) <td style="border-bottom: 1px solid #0d5302">Academic Coordinator</td>
+                    @elseif($view_announcements->recipient_userLevel==33) <td style="border-bottom: 1px solid #0d5302">Registrar, Finance</td>
+                    @elseif($view_announcements->recipient_userLevel==34) <td style="border-bottom: 1px solid #0d5302">Finance</td>
                     @elseif($view_announcements->recipient_userLevel==4) <td style="border-bottom: 1px solid #0d5302">Secretary</td>
-                    @elseif($view_announcements->recipient_userLevel==5) <td style="border-bottom: 1px solid #0d5302">Principal / School Rector</td>@endif
+                    @elseif($view_announcements->recipient_userLevel==51) <td style="border-bottom: 1px solid #0d5302">Principal</td>
+                    @elseif($view_announcements->recipient_userLevel==52) <td style="border-bottom: 1px solid #0d5302">Rector</td>@endif
                 </tr>
                 <tr width="100%">
                     <th style="border-bottom: 1px solid #0d5302" colspan="2">Message:</th>

@@ -89,13 +89,13 @@
                                 <select name="userLevel" class="form-control">
                                     <option id="userLevel" name="userLevel" value="1">Student</option>
                                     <option id="userLevel" name="userLevel" value="2">Teacher</option>
-                                    <option id="userLevel" name="userLevel" value="3">Academic Chairman</option>
-                                    <option id="userLevel" name="userLevel" value="3">Academic Coordinator</option>
-                                    <option id="userLevel" name="userLevel" value="3">Registrar</option>
-                                    <option id="userLevel" name="userLevel" value="3">Finance</option>
+                                    <option id="userLevel" name="userLevel" value="31">Academic Chairman</option>
+                                    <option id="userLevel" name="userLevel" value="32">Academic Coordinator</option>
+                                    <option id="userLevel" name="userLevel" value="33">Registrar</option>
+                                    <option id="userLevel" name="userLevel" value="34">Finance</option>
                                     <option id="userLevel" name="userLevel" value="4">Secretary</option>
-                                    <option id="userLevel" name="userLevel" value="5">Principal</option>
-                                    <option id="userLevel" name="userLevel" value="5">Rector</option>
+                                    <option id="userLevel" name="userLevel" value="51">Principal</option>
+                                    <option id="userLevel" name="userLevel" value="52">Rector</option>
                                 </select>                            
                                 @if ($errors->has('userLevel'))
                                 <span class="help-block">

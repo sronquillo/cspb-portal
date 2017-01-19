@@ -97,11 +97,21 @@
                                     @else Failed
                                     @endif
                                 </td>
-                                <td style="text-align:center">@if ($grades->is_approved==1)<button class="btn btn-default" type='submit' formaction="{{ url('/confirm/modify')}}" disabled>Modify</button>@else<button class="btn btn-default" type='submit' formaction="{{ url('/confirm/modify')}}">Modify</button>@endif
-                                    @if (Auth::user()->userLevel==5 and $grades->is_approved==1)
-                                    <button  style="width:70px" class="btn btn-success" type='submit' formaction="{{ url('/unlock')}}">Unlock</button>
-                                    @elseif (Auth::user()->userLevel==5 and $grades->is_approved==0)
-                                    <button  style="width:70px" class="btn btn-success" type='submit' formaction="{{ url('/lock')}}">Lock</button>
+                                <td style="text-align:center">
+                                    @if ($grades->is_approved==1)
+                                        <button class="btn btn-default" type='submit' formaction="{{ url('/confirm/modify')}}" disabled>Modify</button>
+                                    @else
+                                        <button class="btn btn-default" type='submit' formaction="{{ url('/confirm/modify')}}">Modify</button>
+                                    @endif
+                                    @if (Auth::user()->userLevel==51 and $grades->is_approved==1 or Auth::user()->userLevel==52 and $grades->is_approved==1)
+                                        <button  style="width:70px" class="btn btn-success" type='submit' formaction="{{ url('/unlock')}}">Unlock</button>
+                                    @elseif (Auth::user()->userLevel==51 and $grades->is_approved==0 or Auth::user()->userLevel==52 and $grades->is_approved==0)
+                                        <button  style="width:70px" class="btn btn-success" type='submit' formaction="{{ url('/lock')}}">Lock</button>
+                                    @endif
+                                    @if (Auth::user()->userLevel==51 and $grades->is_approved==1 or Auth::user()->userLevel==52 and $grades->is_approved==1)
+                                        <button  style="width:70px" class="btn btn-warning" type='submit' formaction="#" disabled>Delete</button>
+                                    @elseif (Auth::user()->userLevel==51 and $grades->is_approved==0 or Auth::user()->userLevel==52 and $grades->is_approved==0)
+                                        <button  style="width:70px" class="btn btn-warning" type='submit' formaction="{{ url('/delete')}}">Delete</button>
                                     @endif
                                 </td>
                             </tr>

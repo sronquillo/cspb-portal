@@ -17,7 +17,7 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
                                 @foreach ($user as $users)
-                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==5)
+                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==51 or $users->userLevel==52)
                                 <div align="right"><a href="/modify/users/{{$users->IDno}}"><button class="btn btn-success">Turn Editing On</button></a></div>
                                 @endif
                                 <table width="100%">

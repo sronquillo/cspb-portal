@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+window.onload = function () {
+        getAnnouncements();
+        getNotifications();
+    };
+</script>
 
 <div class="container">
-    <div class="row col-md-9">
+    <div class="col-md-9">
         <div class="panel panel-default"style="border-radius: 0px; background-color: whitesmoke;" >
             <div class="panel-body">
                 <div class="row col-md-11">
@@ -34,6 +40,21 @@
                             <td width='50%' style="border-bottom: 1px solid gray">Account Created</td>
                             <td width='50%' style="border-bottom: 1px solid gray">{{Auth::user()->created_at->format('M d, Y (D)')}}</td>
                         </tr>
+                        <tr>
+                            <td width='50%' style="border-bottom: 1px solid gray">Position</td>
+                            <td width='50%' style="border-bottom: 1px solid gray">
+                                @if (Auth::user()->userLevel==1)Student
+                                @elseif (Auth::user()->userLevel==2)Teacher
+                                @elseif (Auth::user()->userLevel==31)Academic Chairman
+                                @elseif (Auth::user()->userLevel==32)Academic Coordinator
+                                @elseif (Auth::user()->userLevel==33)Registrar
+                                @elseif (Auth::user()->userLevel==34)Finance
+                                @elseif (Auth::user()->userLevel==4)Secretary
+                                @elseif (Auth::user()->userLevel==51)Principal
+                                @elseif (Auth::user()->userLevel==52)Rector
+                                @endif
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -43,6 +64,20 @@
         <div>
             <div class="panel panel-success">
                 <div class="panel-heading">Latest Announcements!</div>
+                <div class="panel-body">Your created announcement will be subject for validation by the school secretary or principal</div>
+            </div>
+        </div>
+        <div>
+            <div class="panel panel-success">
+                <div class="panel-heading">Latest Notifications!</div>
+                <div class="panel-body">Your created announcement will be subject for validation by the school secretary or principal</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div>
+            <div class="panel panel-success">
+                <div class="panel-heading">My Grades</div>
                 <div class="panel-body">Your created announcement will be subject for validation by the school secretary or principal</div>
             </div>
         </div>

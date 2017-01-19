@@ -17,7 +17,7 @@
                             <tr style="border-bottom: 3px solid #0d5302">
                                 <th width="30%"><div align="Left">Date</div></th>
                                 <th width="40%"><div align="Left">Subject</div></th>
-                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==5)
+                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==51 pr Auth::user()->userLevel == 52)
                                 <th width="15%"><div align="Left">From</div></th>
                                 <th width="15%"><div align="Left">Action</div></th>
                                 @else
@@ -29,7 +29,7 @@
                                 <td width="30%"><div align="Left">{{ date('M d, Y (D) - g:i a',strtotime($notifications->created_at)) }}</div></td>
                                 <td width="40%"><div align="Left"><a href="/{{$notifications->anID}}">{{$notifications->subject}}</a></div></td>
                                 <td width="15%"><div align="Left">{{$notifications->firstname}} {{$notifications->lastname}}</div></td>
-                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==5)
+                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==51 or Auth::user()->userLevel == 52)
                                 <td width="15%"><div align="Left">
                                         <a href='/notifications/{{$notifications->anID}}'>Update</a> |
                                         <a href='/delete/notifications/{{$notifications->anID}}'>Delete</a>

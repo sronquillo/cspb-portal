@@ -483,6 +483,15 @@ class HomeController extends Controller {
         ]);
         return redirect()->back();
     }
+    public function deleteGrades() {
+
+        $IDno = $_POST['IDno'];
+
+        $subject = $_POST['subject'];
+
+        DB::delete("DELETE FROM grades WHERE IDno = $IDno and subjectName = '$subject'");
+        return redirect()->back();
+    }
 
     public function allUnlockGrades() {
 

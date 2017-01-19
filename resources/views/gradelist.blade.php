@@ -41,7 +41,7 @@
                                     <td width="50%"><div align="Left">{{$grades->firstname}} {{$grades->middlename}} {{$grades->lastname}}</div></td>
                                     <td width="30%"><div align="Left">
                                             <a href='/grades/{{$grades->IDno}}'>View Grades</a>
-                                            @if (Auth::user()->userLevel == 4 or Auth::user()->userLevel == 5)|
+                                            @if (Auth::user()->userLevel == 4 or Auth::user()->userLevel == 51 or Auth::user()->userLevel == 52)|
                                             <a href='/modify/grades/{{$grades->IDno}}'>Modify Grades</a>
                                             @else
                                             @endif

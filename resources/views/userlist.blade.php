@@ -53,12 +53,12 @@
                                             @endif
                                             @else
                                             @endif
-                                            @elseif (Auth::user()->userLevel==5)
+                                            @elseif (Auth::user()->userLevel==51 or Auth::user()->userLevel==52)
                                             @if ($users->userLevel==1)
                                             | <a href="/grades/{{$users->IDno}}">View Grades</a>
                                             @else
                                             @endif
-                                            @if ($users->userLevel==1 or $users->userLevel==2 or $users->userLevel==3 or $users->userLevel==4 or $users->userLevel==5)
+                                            @if ($users->userLevel==1 or $users->userLevel==2 or $users->userLevel==31 or $users->userLevel==32 or $users->userLevel==33 or $users->userLevel==34 or $users->userLevel==4 or $users->userLevel==51 or $users->userLevel==52)
                                             @if ($users->is_active==1)
                                             | <a href="/deactivate/{{$users->IDno}}">Deactivate</a>
                                             @else

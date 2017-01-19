@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-3.3.7/dist/css/bootstrap-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-3.3.7/dist/css/bootstrap.css') }}">
+        <script src="/script/myJS.js"></script>
 
         <style>
             body {
@@ -97,7 +98,7 @@
                         @endif
 
                         <!--Acad, Registrar, Finance-->
-                        @if (Auth::user()->userLevel==3)
+                        @if (Auth::user()->userLevel==31 or Auth::user()->userLevel==32 or Auth::user()->userLevel==33 or Auth::user()->userLevel==34)
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Announcements <span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="font-size: 10pt">
@@ -151,7 +152,7 @@
                             @endif
 
                             <!--Principal, Rector-->
-                            @if (Auth::user()->userLevel==5)
+                            @if (Auth::user()->userLevel==51 or Auth::user()->userLevel==52)
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Announcements <span class="caret"></span>
                                 </a>

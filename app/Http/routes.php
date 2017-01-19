@@ -63,6 +63,7 @@ Route::post('/add/grades', 'HomeController@addGrades');
 //lock grades
 Route::post('/unlock', 'HomeController@unlockGrades');
 Route::post('/lock', 'HomeController@lockGrades');
+Route::post('/delete', 'HomeController@deleteGrades');
 Route::get('/all/unlock', 'HomeController@allUnlockGrades');
 
 
@@ -82,3 +83,6 @@ Route::get('/users', function() {
 Route::post('/submit', 'HomeController@submit');
 Route::post('/update', 'HomeController@update');
 Route::get('{anID}', 'HomeController@view_announcement');
+
+//AJAX
+Route::get('/get/announcements/', 'ajaxController@getAnnouncements');
