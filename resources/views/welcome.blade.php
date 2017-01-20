@@ -2,7 +2,7 @@
 
 @section('content')
 <script>
-ScrollRate = 1;
+ScrollRate = 50;
 
 function scrollDiv_init() {
     DivElmnt = document.getElementById('MyDivName');
@@ -79,8 +79,20 @@ window.onload = function () {
 	scrollDiv_init();
 	scrollDiv_init2();
 	
+	$('.Table #tr3') .each(function(i, row) {
+    setTimeout(function() {
+        $(row).fadeIn(3000);
+    }, 3000 * i);
+});
+	
 }
 </script>
+
+<style type="text/css">
+#table1 #tr3 {
+    display: none;
+}
+</style>
 
 <div class="container">
     <div class="col-md-9">
@@ -91,9 +103,9 @@ window.onload = function () {
                     <h5>{{Auth::user()->address}}</h5><hr>
                 </div>
                 <div class='col-md-1'><h1><span class="glyphicon glyphicon-user"></span></h1></div>
-                <div class="col-md-11">
+                <div class="col-md-6">
                     <h3 style="border-bottom: 2px solid gray">My Details</h3>
-                    <table width='50%'>
+                    <table width='100%'>
                         <tr>
                             <td width='50%' style="border-bottom: 1px solid gray">Last Online</td>
                             <td width='50%' style="border-bottom: 1px solid gray">{{Auth::user()->updated_at->format('M d, Y (D)')}}</td>
@@ -128,7 +140,7 @@ window.onload = function () {
                                 @elseif (Auth::user()->userLevel==52)Rector
                                 @endif
                             </td>
-                        </tr>
+                        </tr><br>
                     </table>
                 </div>
             </div>
@@ -161,7 +173,79 @@ window.onload = function () {
         <div>
             <div class="panel panel-success">
                 <div class="panel-heading">My Grades</div>
-                <div class="panel-body">Your created announcement will be subject for validation by the school secretary or principal</div>
+                <div class="panel-body">
+                    <table border=1 width=100% align="center"  class="Table" id="table1">
+                        <tr style="text-align: center; font-weight: bold">
+                            <td rowspan=2>SUBJECTS</td>
+                            <td colspan=4>QUARTER</td>
+                            <td rowspan=2 width="80">Final<br> Rating</td>
+                            <td rowspan=2>Remark</td>
+                        </tr>
+                        <tr  style="text-align: center; font-weight: bold">
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                        </tr>
+
+                        <tr id="tr3">
+                            <td>Science</td>
+                            <td style="text-align: center">91</td>
+                            <td style="text-align: center">91</td>
+                            <td style="text-align: center">91</td>
+                            <td style="text-align: center">91</td>
+                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
+                            <td style="text-align: center">
+                                @if (($avg)>=75) Passed
+                                @else Failed
+                                @endif
+
+                            </td>
+                        </tr>
+                        <tr id="tr3">
+                            <td>Math</td>
+                            <td style="text-align: center">89</td>
+                            <td style="text-align: center">88</td>
+                            <td style="text-align: center">85</td>
+                            <td style="text-align: center">90</td>
+                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
+                            <td style="text-align: center">
+                                @if (($avg)>=75) Passed
+                                @else Failed
+                                @endif
+
+                            </td>
+                        </tr>
+                        <tr id="tr3">
+                            <td>English</td>
+                            <td style="text-align: center">75</td>
+                            <td style="text-align: center">78</td>
+                            <td style="text-align: center">80</td>
+                            <td style="text-align: center">82</td>
+                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
+                            <td style="text-align: center">
+                                @if (($avg)>=75) Passed
+                                @else Failed
+                                @endif
+
+                            </td>
+                        </tr>
+                        <tr id="tr3">
+                            <td>Christian Living</td>
+                            <td style="text-align: center">89</td>
+                            <td style="text-align: center">88</td>
+                            <td style="text-align: center">85</td>
+                            <td style="text-align: center">90</td>
+                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
+                            <td style="text-align: center">
+                                @if (($avg)>=75) Passed
+                                @else Failed
+                                @endif
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
