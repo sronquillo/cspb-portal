@@ -2,11 +2,56 @@
 
 @section('content')
 <script>
+ScrollRate = 50;
+
+function scrollDiv_init() {
+    DivElmnt = document.getElementById('MyDivName');
+    ReachedMaxScroll = false;
+   
+    DivElmnt.scrollTop = 0;
+    PreviousScrollTop  = 0;
+   
+    ScrollInterval = setInterval('scrollDiv()', ScrollRate);
+}
+
+function scrollDiv() {
+   
+    if (!ReachedMaxScroll) {
+        DivElmnt.scrollTop = PreviousScrollTop;
+        PreviousScrollTop++;
+       
+        ReachedMaxScroll = DivElmnt.scrollTop >= (DivElmnt.scrollHeight - DivElmnt.offsetHeight);
+    }
+    else {
+        ReachedMaxScroll = (DivElmnt.scrollTop == 0)?false:true;
+       
+        DivElmnt.scrollTop = PreviousScrollTop;
+        PreviousScrollTop--;
+    }
+}
+
+function pauseDiv() {
+    clearInterval(ScrollInterval);
+}
+
+function resumeDiv() {
+    PreviousScrollTop = DivElmnt.scrollTop;
+    ScrollInterval    = setInterval('scrollDiv()', ScrollRate);
+}
 window.onload = function () {
-        getAnnouncements();
-        getNotifications();
-    };
+	scrollDiv_init();
+	
+}
 </script>
+
+<div onMouseOver="pauseDiv()" onMouseOut="resumeDiv()" class = "list-group-item" id="profile">
+                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Messages   
+
+                    <ul class="list-group" id="MyDivName" style="overflow:auto;height:150px">
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis leo sit amet egestas fringilla. Morbi aliquet, eros sit amet aliquam fermentum, odio lacus cursus elit, ac venenatis diam leo sit amet metus. Maecenas posuere, enim non sollicitudin consectetur, enim elit congue sem, vel feugiat tortor nunc eu augue. Vestibulum egestas rhoncus ligula at malesuada. In consectetur elementum dolor sit amet tincidunt. Pellentesque nisi velit, convallis vel sapien aliquet, vehicula maximus diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque mattis lorem malesuada laoreet elementum. Vivamus convallis tempus est eu viverra. Ut aliquam risus tristique risus tempus lobortis.
+
+Etiam molestie ac erat eget gravida. Aliquam posuere at nunc a tristique. Mauris ornare velit libero, et volutpat diam dictum nec. Fusce eu tempor eros, dignissim ultricies magna. Aenean at augue dolor. Cras hendrerit dictum eros tristique bibendum. Morbi feugiat fermentum dolor quis pretium. Vestibulum urna mi, lobortis at ipsum a, feugiat lacinia ante. 
+</div>
 
 <div class="container">
     <div class="col-md-9">
