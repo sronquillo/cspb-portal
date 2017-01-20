@@ -15,7 +15,32 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        return view('welcome');
+        
+        $user = Auth::user()->IDno;
+        $grade = DB::Select("Select *, AVG(g.q1+g.q2+g.q3+g.q4)/4 as avg from users as u, grades as g where u.IDno = g.IDno and u.IDno like '$user' and g.is_approved=1 group by g.gID order by g.subjectName ");
+        $userInfo = DB::table('users')->where('IDno', $user)->first();
+
+        $announcement = DB::table('users')
+                ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
+                ->where('announcementNotif.is_approved', '=', 1)
+                ->where('announcementNotif.type', '=', 0)
+                ->where('announcementNotif.status', '=', 1)
+                ->where('announcementNotif.recipient_userLevel', '=', 0)
+                ->orderBy('announcementNotif.created_at', 'desc')
+                ->simplePaginate(1);
+        
+        $userLevel = Auth::user()->userLevel;
+        $notification = DB::table('users')
+                ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
+                ->where('announcementNotif.is_approved', '=', 1)
+                ->where('announcementNotif.type', '=', 1)
+                ->where('announcementNotif.status', '=', 1)
+                ->where('announcementNotif.recipient_userLevel', '=', $userLevel)
+                ->orderBy('announcementNotif.created_at', 'desc')
+                ->simplePaginate(1);
+        
+        return view('welcome', compact('grade', 'userInfo', 'announcement', 'notification'));
+        
     }
 
     public function announcements() {

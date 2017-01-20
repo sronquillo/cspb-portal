@@ -83,6 +83,3 @@ Route::get('/users', function() {
 Route::post('/submit', 'HomeController@submit');
 Route::post('/update', 'HomeController@update');
 Route::get('{anID}', 'HomeController@view_announcement');
-
-//AJAX
-Route::get('/get/announcements/', 'ajaxController@getAnnouncements');

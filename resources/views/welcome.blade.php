@@ -2,96 +2,94 @@
 
 @section('content')
 <script>
-ScrollRate = 50;
+    ScrollRate = 50;
 
-function scrollDiv_init() {
-    DivElmnt = document.getElementById('MyDivName');
-    ReachedMaxScroll = false;
-   
-    DivElmnt.scrollTop = 0;
-    PreviousScrollTop  = 0;
-   
-    ScrollInterval = setInterval('scrollDiv()', ScrollRate);
-}
+    function scrollDiv_init() {
+        DivElmnt = document.getElementById('MyDivName');
+        ReachedMaxScroll = false;
 
-function scrollDiv() {
-   
-    if (!ReachedMaxScroll) {
-        DivElmnt.scrollTop = PreviousScrollTop;
-        PreviousScrollTop++;
-       
-        ReachedMaxScroll = DivElmnt.scrollTop >= (DivElmnt.scrollHeight - DivElmnt.offsetHeight);
+        DivElmnt.scrollTop = 0;
+        PreviousScrollTop = 0;
+
+        ScrollInterval = setInterval('scrollDiv()', ScrollRate);
     }
-    else {
-        ReachedMaxScroll = (DivElmnt.scrollTop == 0)?false:true;
-       
-        DivElmnt.scrollTop = PreviousScrollTop;
-        PreviousScrollTop--;
+
+    function scrollDiv() {
+
+        if (!ReachedMaxScroll) {
+            DivElmnt.scrollTop = PreviousScrollTop;
+            PreviousScrollTop++;
+
+            ReachedMaxScroll = DivElmnt.scrollTop >= (DivElmnt.scrollHeight - DivElmnt.offsetHeight);
+        } else {
+            ReachedMaxScroll = (DivElmnt.scrollTop == 0) ? false : true;
+
+            DivElmnt.scrollTop = PreviousScrollTop;
+            PreviousScrollTop--;
+        }
     }
-}
 
-function pauseDiv() {
-    clearInterval(ScrollInterval);
-}
-
-function resumeDiv() {
-    PreviousScrollTop = DivElmnt.scrollTop;
-    ScrollInterval    = setInterval('scrollDiv()', ScrollRate);
-}
-
-
-function scrollDiv_init2() {
-    DivElmnt2 = document.getElementById('MyDivName2');
-    ReachedMaxScroll2 = false;
-   
-    DivElmnt2.scrollTop = 0;
-    PreviousScrollTop2  = 0;
-   
-    ScrollInterval2 = setInterval('scrollDiv2()', ScrollRate);
-}
-
-function scrollDiv2() {
-   
-    if (!ReachedMaxScroll2) {
-        DivElmnt2.scrollTop = PreviousScrollTop2;
-        PreviousScrollTop2++;
-       
-        ReachedMaxScroll2 = DivElmnt2.scrollTop >= (DivElmnt2.scrollHeight - DivElmnt2.offsetHeight);
+    function pauseDiv() {
+        clearInterval(ScrollInterval);
     }
-    else {
-        ReachedMaxScroll2 = (DivElmnt2.scrollTop == 0)?false:true;
-       
-        DivElmnt2.scrollTop = PreviousScrollTop2;
-        PreviousScrollTop2--;
+
+    function resumeDiv() {
+        PreviousScrollTop = DivElmnt.scrollTop;
+        ScrollInterval = setInterval('scrollDiv()', ScrollRate);
     }
-}
 
-function pauseDiv2() {
-    clearInterval(ScrollInterval2);
-}
 
-function resumeDiv2() {
-    PreviousScrollTop2 = DivElmnt2.scrollTop;
-    ScrollInterval2    = setInterval('scrollDiv2()', ScrollRate);
-}
+    function scrollDiv_init2() {
+        DivElmnt2 = document.getElementById('MyDivName2');
+        ReachedMaxScroll2 = false;
 
-window.onload = function () {
-	scrollDiv_init();
-	scrollDiv_init2();
-	
-	$('.Table #tr3') .each(function(i, row) {
-    setTimeout(function() {
-        $(row).fadeIn(3000);
-    }, 3000 * i);
-});
-	
-}
+        DivElmnt2.scrollTop = 0;
+        PreviousScrollTop2 = 0;
+
+        ScrollInterval2 = setInterval('scrollDiv2()', ScrollRate);
+    }
+
+    function scrollDiv2() {
+
+        if (!ReachedMaxScroll2) {
+            DivElmnt2.scrollTop = PreviousScrollTop2;
+            PreviousScrollTop2++;
+
+            ReachedMaxScroll2 = DivElmnt2.scrollTop >= (DivElmnt2.scrollHeight - DivElmnt2.offsetHeight);
+        } else {
+            ReachedMaxScroll2 = (DivElmnt2.scrollTop == 0) ? false : true;
+
+            DivElmnt2.scrollTop = PreviousScrollTop2;
+            PreviousScrollTop2--;
+        }
+    }
+
+    function pauseDiv2() {
+        clearInterval(ScrollInterval2);
+    }
+
+    function resumeDiv2() {
+        PreviousScrollTop2 = DivElmnt2.scrollTop;
+        ScrollInterval2 = setInterval('scrollDiv2()', ScrollRate);
+    }
+
+    window.onload = function () {
+        scrollDiv_init();
+        scrollDiv_init2();
+
+        $('.Table #tr3').each(function (i, row) {
+            setTimeout(function () {
+                $(row).delay(1000) .fadeIn(3000);
+            }, 3000 * i);
+        });
+
+    }
 </script>
 
 <style type="text/css">
-#table1 #tr3 {
-    display: none;
-}
+    #table1 #tr3 {
+        display: none;
+    }
 </style>
 
 <div class="container">
@@ -103,9 +101,9 @@ window.onload = function () {
                     <h5>{{Auth::user()->address}}</h5><hr>
                 </div>
                 <div class='col-md-1'><h1><span class="glyphicon glyphicon-user"></span></h1></div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <h3 style="border-bottom: 2px solid gray">My Details</h3>
-                    <table width='100%'>
+                    <table width='40%'>
                         <tr>
                             <td width='50%' style="border-bottom: 1px solid gray">Last Online</td>
                             <td width='50%' style="border-bottom: 1px solid gray">{{Auth::user()->updated_at->format('M d, Y (D)')}}</td>
@@ -151,24 +149,57 @@ window.onload = function () {
             <div class="panel panel-success">
                 <div class="panel-heading">Latest Announcements!</div>
                	<div class="panel-body" onMouseOver="pauseDiv()" onMouseOut="resumeDiv()" class = "list-group-item" id="profile">
-               		<ul class="list-group" id="MyDivName" style="overflow:auto;height:100px">
-               			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis leo sit amet egestas fringilla. Morbi aliquet, eros sit amet aliquam fermentum, odio lacus cursus elit, ac venenatis diam leo sit amet metus. Maecenas posuere, enim non sollicitudin consectetur, enim elit congue sem, vel feugiat tortor nunc eu augue. Vestibulum egestas rhoncus ligula at malesuada. In consectetur elementum dolor sit amet tincidunt. Pellentesque nisi velit, convallis vel sapien aliquet, vehicula maximus diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque mattis lorem malesuada laoreet elementum. Vivamus convallis tempus est eu viverra. Ut aliquam risus tristique risus tempus lobortis. Etiam molestie ac erat eget gravida. Aliquam posuere at nunc a tristique. Mauris ornare velit libero, et volutpat diam dictum nec. Fusce eu tempor eros, dignissim ultricies magna. Aenean at augue dolor. Cras hendrerit dictum eros tristique bibendum. Morbi feugiat fermentum dolor quis pretium. Vestibulum urna mi, lobortis at ipsum a, feugiat lacinia ante.
-               		</ul>
+                    <ul class="list-group" id="MyDivName" style="overflow:auto;height:100px">
+                        <table>
+                            @foreach($announcement as $announcements)
+                            <tr>
+                                <td style="border-bottom: 1px solid gray">From:</td>
+                                <td style="border-bottom: 1px solid gray">{{$announcements->firstname}} {{$announcements->lastname}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom: 1px solid gray">Subject:</td>
+                                <td style="border-bottom: 1px solid gray"><b>{{$announcements->subject}}</b></td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: text-top; border-bottom: 1px solid gray">Message:</td>
+                                <td style="border-bottom: 1px solid gray"><b>{{$announcements->message}}</b></td>
+                            </tr>
+                            @endforeach
+                        </table>
+                    </ul>
                	</div>
-				</div>
+            </div>
         </div>
         <div>
             <div class="panel panel-success">
                 <div class="panel-heading">Latest Notifications!</div>
                	<div class="panel-body" onMouseOver="pauseDiv2()" onMouseOut="resumeDiv2()" class = "list-group-item" id="profile">
-               		<ul class="list-group" id="MyDivName2" style="overflow:auto;height:100px">
-               			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis leo sit amet egestas fringilla. Morbi aliquet, eros sit amet aliquam fermentum, odio lacus cursus elit, ac venenatis diam leo sit amet metus. Maecenas posuere, enim non sollicitudin consectetur, enim elit congue sem, vel feugiat tortor nunc eu augue. Vestibulum egestas rhoncus ligula at malesuada. In consectetur elementum dolor sit amet tincidunt. Pellentesque nisi velit, convallis vel sapien aliquet, vehicula maximus diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque mattis lorem malesuada laoreet elementum. Vivamus convallis tempus est eu viverra. Ut aliquam risus tristique risus tempus lobortis. Etiam molestie ac erat eget gravida. Aliquam posuere at nunc a tristique. Mauris ornare velit libero, et volutpat diam dictum nec. Fusce eu tempor eros, dignissim ultricies magna. Aenean at augue dolor. Cras hendrerit dictum eros tristique bibendum. Morbi feugiat fermentum dolor quis pretium. Vestibulum urna mi, lobortis at ipsum a, feugiat lacinia ante.
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis leo sit amet egestas fringilla. Morbi aliquet, eros sit amet aliquam fermentum, odio lacus cursus elit, ac venenatis diam leo sit amet metus. Maecenas posuere, enim non sollicitudin consectetur, enim elit congue sem, vel feugiat tortor nunc eu augue. Vestibulum egestas rhoncus ligula at malesuada. In consectetur elementum dolor sit amet tincidunt. Pellentesque nisi velit, convallis vel sapien aliquet, vehicula maximus diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque mattis lorem malesuada laoreet elementum. Vivamus convallis tempus est eu viverra. Ut aliquam risus tristique risus tempus lobortis. Etiam molestie ac erat eget gravida. Aliquam posuere at nunc a tristique. Mauris ornare velit libero, et volutpat diam dictum nec. Fusce eu tempor eros, dignissim ultricies magna. Aenean at augue dolor. Cras hendrerit dictum eros tristique bibendum. Morbi feugiat fermentum dolor quis pretium. Vestibulum urna mi, lobortis at ipsum a, feugiat lacinia ante.
-               		</ul>
+                    <ul class="list-group" id="MyDivName2" style="overflow:auto;height:100px">
+                        <table>
+                            @foreach($notification as $notifications)
+                            <tr>
+                                <td style="border-bottom: 1px solid gray">From:</td>
+                                <td style="border-bottom: 1px solid gray">{{$notifications->firstname}} {{$notifications->lastname}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom: 1px solid gray">Subject:</td>
+                                <td style="border-bottom: 1px solid gray"><b>{{$notifications->subject}}</b></td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: text-top; border-bottom: 1px solid gray">Message:</td>
+                                <td style="border-bottom: 1px solid gray"><b>{{$notifications->message}}</b></td>
+                            </tr>
+                            @endforeach
+                        </table>
+                    </ul>
                	</div>
-				</div>
+            </div>
         </div>
     </div>
+    
+    
+    
+    @if (Auth::user()->userLevel==1)
     <div class="col-md-12">
         <div>
             <div class="panel panel-success">
@@ -178,8 +209,6 @@ window.onload = function () {
                         <tr style="text-align: center; font-weight: bold">
                             <td rowspan=2>SUBJECTS</td>
                             <td colspan=4>QUARTER</td>
-                            <td rowspan=2 width="80">Final<br> Rating</td>
-                            <td rowspan=2>Remark</td>
                         </tr>
                         <tr  style="text-align: center; font-weight: bold">
                             <td>1</td>
@@ -188,66 +217,22 @@ window.onload = function () {
                             <td>4</td>
                         </tr>
 
+                        @foreach($grade as $grades)
                         <tr id="tr3">
-                            <td>Science</td>
-                            <td style="text-align: center">91</td>
-                            <td style="text-align: center">91</td>
-                            <td style="text-align: center">91</td>
-                            <td style="text-align: center">91</td>
-                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
-                            <td style="text-align: center">
-                                @if (($avg)>=75) Passed
-                                @else Failed
-                                @endif
-
-                            </td>
+                            <td>{{$grades->subjectName}}</td>
+                            <td style="text-align: center">{{$grades->q1}}</td>
+                            <td style="text-align: center">{{$grades->q2}}</td>
+                            <td style="text-align: center">{{$grades->q3}}</td>
+                            <td style="text-align: center">{{$grades->q4}}</td>
                         </tr>
-                        <tr id="tr3">
-                            <td>Math</td>
-                            <td style="text-align: center">89</td>
-                            <td style="text-align: center">88</td>
-                            <td style="text-align: center">85</td>
-                            <td style="text-align: center">90</td>
-                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
-                            <td style="text-align: center">
-                                @if (($avg)>=75) Passed
-                                @else Failed
-                                @endif
-
-                            </td>
-                        </tr>
-                        <tr id="tr3">
-                            <td>English</td>
-                            <td style="text-align: center">75</td>
-                            <td style="text-align: center">78</td>
-                            <td style="text-align: center">80</td>
-                            <td style="text-align: center">82</td>
-                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
-                            <td style="text-align: center">
-                                @if (($avg)>=75) Passed
-                                @else Failed
-                                @endif
-
-                            </td>
-                        </tr>
-                        <tr id="tr3">
-                            <td>Christian Living</td>
-                            <td style="text-align: center">89</td>
-                            <td style="text-align: center">88</td>
-                            <td style="text-align: center">85</td>
-                            <td style="text-align: center">90</td>
-                            <td style="text-align: center">{!!$avg=ROUND(91)!!}</td>
-                            <td style="text-align: center">
-                                @if (($avg)>=75) Passed
-                                @else Failed
-                                @endif
-
-                            </td>
-                        </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    @endif
+    
+    
 </div>
 @endsection
