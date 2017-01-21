@@ -17,7 +17,7 @@
                             <tr style="border-bottom: 3px solid #0d5302">
                                 <th width="30%"><div align="Left">Date</div></th>
                                 <th width="40%"><div align="Left">Subject</div></th>
-                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==51 pr Auth::user()->userLevel == 52)
+                                @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==51 or Auth::user()->userLevel == 52)
                                 <th width="15%"><div align="Left">From</div></th>
                                 <th width="15%"><div align="Left">Action</div></th>
                                 @else
