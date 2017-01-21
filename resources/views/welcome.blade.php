@@ -91,11 +91,199 @@
         display: none;
     }
 </style>
+<style>
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    top: 20px;
+    display: block;
+    width: 70%;
+    max-width: 100%;
+    border: 7px solid rgba(0, 0, 0, .2);
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 70%;
+    max-width: 100%;
+    text-align: center;
+    color: #ccc;
+    padding: 20px 0;
+    height: 1px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+</style>
+
+<style>
+#myImg2 {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg2:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal2 {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content2 {
+    margin: auto;
+    top: 20px;
+    display: block;
+    width: 70%;
+    max-width: 100%;
+    border: 7px solid rgba(0, 0, 0, .2);
+}
+
+/* Caption of Modal Image */
+#caption2 {
+    margin: auto;
+    display: block;
+    width: 70%;
+    max-width: 100%;
+    text-align: center;
+    color: #ccc;
+    padding: 20px 0;
+    height: 1px;
+}
+
+/* Add Animation */
+.modal-content2, #caption2 {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close2 {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close2:hover,
+.close2:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content2 {
+        width: 100%;
+    }
+}
+</style>
+
 
 <div class="container">
     <div class="col-md-9">
         <div class="panel panel-default"style="border-radius: 0px; background-color: whitesmoke;" >
             <div class="panel-body">
+            								<div id="myModal" class="modal">
+													<span class="close">&times;</span>
+													<img class="modal-content" id="img01">
+													<div id="caption"></div>
+												</div>
+												<div id="myModal2" class="modal2">
+													<span class="close2">&times;</span>
+													<img class="modal-content2" id="img02">
+													<div id="caption2"></div>
+												</div>
                 <div class="row col-md-11">
                     <h1 style="color: #0a7e07">{{Auth::user()->firstname}} {{Auth::user()->lastname}} ({{Auth::user()->IDno}})</h1>
                     <h5>{{Auth::user()->address}}</h5><hr>
@@ -162,7 +350,12 @@
                             </tr>
                             <tr>
                                 <td style="vertical-align: text-top; border-bottom: 1px solid gray">Message:</td>
-                                <td style="border-bottom: 1px solid gray"><b>{{$announcements->message}}</b></td>
+                                <td style="border-bottom: 1px solid gray"><b>{{$announcements->message}}</b><br>
+	                                @if ($announcements->image!=null)
+	                                	<img id="myImg" src="/upload-images/{{$announcements->image}}" alt="{{$announcements->image}}" width="100%">
+												</br> 
+      	                          @endif
+                                </td>
                             </tr>
                             @endforeach
                         </table>
@@ -187,7 +380,12 @@
                             </tr>
                             <tr>
                                 <td style="vertical-align: text-top; border-bottom: 1px solid gray">Message:</td>
-                                <td style="border-bottom: 1px solid gray"><b>{{$notifications->message}}</b></td>
+                                <td style="border-bottom: 1px solid gray"><b>{{$notifications->message}}
+											@if ($notifications->image!=null)
+	                                	<img id="myImg2" src="/upload-images/{{$notifications->image}}" alt="{{$notifications->image}}" width="100%">
+												</br> 
+      	                          @endif                                
+                                </b></td>
                             </tr>
                             @endforeach
                         </table>
@@ -232,7 +430,49 @@
         </div>
     </div>
     @endif
-    
-    
 </div>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+    modal.style.display = "none";
+}
+</script>
+<script>
+// Get the modal
+var modal2 = document.getElementById('myModal2');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img2 = document.getElementById('myImg2');
+var modalImg2 = document.getElementById("img02");
+var captionText2 = document.getElementById("caption2");
+img2.onclick = function(){
+    modal2.style.display = "block";
+    modalImg2.src = this.src;
+    captionText2.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("close2")[0];
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() { 
+    modal2.style.display = "none";
+}
+</script>
 @endsection
