@@ -40,16 +40,21 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><div style="text-align: justify"><p>{{$view_announcements->message}}<br>
+                    <td>
+                        <div style="text-align: justify">
+                            <p>{{$view_announcements->message}}<br>
 
                                 @if ($view_announcements->image!=null)
                                 <img src='/upload-images/{{$view_announcements->image}}' width="70%"></br> 
                                 @endif
 
                                 @endforeach
-                                </table>
+                            </p>
                         </div>
-                        </div>
-                        </div>
+                    </td>
+            </table>
+        </div>
+    </div>
+</div>
 
-                        @endsection
+@endsection

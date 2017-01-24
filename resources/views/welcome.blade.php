@@ -350,12 +350,11 @@
                             </tr>
                             <tr>
                                 <td style="vertical-align: text-top; border-bottom: 1px solid gray">Message:</td>
-                                <td style="border-bottom: 1px solid gray"><b>{{$announcements->message}}</b><br>
-	                                @if ($announcements->image!=null)
-	                                	<img id="myImg" src="/upload-images/{{$announcements->image}}" alt="{{$announcements->image}}" width="100%">
-												</br> 
-      	                          @endif
-                                </td>
+                                <td style="border-bottom: 1px solid gray"><p>{{$announcements->message}}<br>
+	                            @if ($announcements->image!=null)
+	                                <img id="myImg" src="/upload-images/{{$announcements->image}}" alt="{{$announcements->image}}" width="100%"></br> 
+                                    @endif
+                                </p></td>
                             </tr>
                             @endforeach
                         </table>
@@ -380,12 +379,11 @@
                             </tr>
                             <tr>
                                 <td style="vertical-align: text-top; border-bottom: 1px solid gray">Message:</td>
-                                <td style="border-bottom: 1px solid gray"><b>{{$notifications->message}}
-											@if ($notifications->image!=null)
-	                                	<img id="myImg2" src="/upload-images/{{$notifications->image}}" alt="{{$notifications->image}}" width="100%">
-												</br> 
-      	                          @endif                                
-                                </b></td>
+                                <td style="border-bottom: 1px solid gray"><p>{{$notifications->message}}
+                                    @if ($notifications->image!=null)
+                                        <img id="myImg2" src="/upload-images/{{$notifications->image}}" alt="{{$notifications->image}}" width="100%"></br> 
+                                    @endif                                
+                                </p></td>
                             </tr>
                             @endforeach
                         </table>

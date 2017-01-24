@@ -2,38 +2,38 @@
 <div class="container"style="padding-bottom: 11%">
     <div class="row">
         <div class="col-md-6">
-		<h1 style ="color:#0a7e07; border-bottom: solid 2px">Institutional Goals</h1>
-                <ul>
-                    <li>Design and regularly update the curriculum that addresses the interest and current needs of the students in response to the challenges of the Third Millenium.</li>
-                </ul>
-                <ul>
-                    <li>Integrate the Gospel values in the Catholic formation of the students to build a just and more humane society.</li>
-                </ul>
-                <ul>
-                    <li>Develop the programs that will enable the students to grow spiritually, psychologically, emotionally, morally and socially as Christian Catholic.</li>
-                </ul>
-                <ul>
-                    <li>Enhance leadership capabilities of the students who are value laden and service oriented with a deep sense of respect and concern for others.</li>
-                </ul>
+            <h1 style ="color:#0a7e07; border-bottom: solid 2px">Institutional Goals</h1>
+            <ul>
+                <li>Design and regularly update the curriculum that addresses the interest and current needs of the students in response to the challenges of the Third Millenium.</li>
+            </ul>
+            <ul>
+                <li>Integrate the Gospel values in the Catholic formation of the students to build a just and more humane society.</li>
+            </ul>
+            <ul>
+                <li>Develop the programs that will enable the students to grow spiritually, psychologically, emotionally, morally and socially as Christian Catholic.</li>
+            </ul>
+            <ul>
+                <li>Enhance leadership capabilities of the students who are value laden and service oriented with a deep sense of respect and concern for others.</li>
+            </ul>
         </div>
-        
+
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading"style="background: whitesmoke">Login</div>
-                <div class="panel-body">
-                    
+                <div class="panel-body" style=" border-radius: 0px; background-color: #0a7e07; color: white">Login</div>
+                <div class="panel-body" style=" border-radius: 0px; background-color: white;">
+
                     <?php if(count($errors) > 0): ?>
-			<div class="alert alert-danger">
-				<strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-				<?php foreach($errors->all() as $error): ?>
-                                    <li><?php echo e($error); ?></li>
-				<?php endforeach; ?>
-                            </ul>
-			</div>
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            <?php foreach($errors->all() as $error): ?>
+                            <li><?php echo e($error); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                     <?php endif; ?>
-                    
-                    
+
+
                     <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/login')); ?>">
                         <?php echo e(csrf_field()); ?>
 
@@ -66,10 +66,10 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     Login
                                 </button>
-                                
+
                                 <a class="btn btn-link" href="<?php echo e(url('/password/reset')); ?>">Forgot Your Password?</a>
                             </div>
                         </div>
