@@ -28,6 +28,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/prompt', function() {
+    return view('auth.prompt');
+});
+
 //announcements
 Route::get('/announcements', 'HomeController@announcements');
 Route::get('/announcements/{input}/', 'HomeController@update_announcement');

@@ -5,12 +5,5 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>cspb</name>
         </data>
-        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
-            <word>Baylon</word>
-            <word>Bulacan</word>
-            <word>Firstname</word>
-            <word>IDno</word>
-            <word>Lastname</word>
-        </spellchecker-wordlist>
     </configuration>
 </project>
