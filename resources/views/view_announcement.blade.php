@@ -8,7 +8,7 @@
 <div class="container" style="padding-bottom: 20px">
     <div class="container-fluid" style="border: 1px solid #0d5302; border-radius: 0px; background-color: white">        
         <div class="container-fluid" style="padding-top: 10px; padding-bottom: 10px">
-            <table style= "width: 100%; word-wrap:break-word; table-layout: fixed; line-height: 30px">
+            <table id="ggg" style= "width: 100%; word-wrap:break-word; table-layout: fixed; line-height: 30px">
                 @foreach($view_announcement as $view_announcements)                
                 <tr>
                     <th style="border-bottom: 1px solid #0d5302" width="10%">From:</th>
@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <th style="border-bottom: 1px solid #0d5302">Subject:</th>
-                    <td style="border-bottom: 1px solid #0d5302">{{$view_announcements->subject}}</td>
+                    <td style="border-bottom: 1px solid #0d5302">{{$view_announcements->subject}} @if ($view_announcements->is_approved == 0)(Pending) @else @endif</td>
                 </tr>
                 <tr>
                     <th style="border-bottom: 1px solid #0d5302">Recipient:</th>
@@ -39,8 +39,8 @@
                     <th style="border-bottom: 1px solid #0d5302" colspan="2">Message:</th>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td>
+                    <td style="border-bottom: 1px solid #0d5302"></td>
+                    <td style="border-bottom: 1px solid #0d5302">
                         <div style="text-align: justify">
                             <p>{{$view_announcements->message}}<br>
 
@@ -52,7 +52,8 @@
                             </p>
                         </div>
                     </td>
-            </table>
+            </table></br>
+            <button class="btn btn-success" onclick="print()">Print This Page</button>
         </div>
     </div>
 </div>

@@ -416,10 +416,10 @@
                         @foreach($grade as $grades)
                         <tr id="tr3">
                             <td>{{$grades->subjectName}}</td>
-                            <td style="text-align: center">{{$grades->q1}}</td>
-                            <td style="text-align: center">{{$grades->q2}}</td>
-                            <td style="text-align: center">{{$grades->q3}}</td>
-                            <td style="text-align: center">{{$grades->q4}}</td>
+                            <td style="text-align: center">@if ($grades->q1 == 0) @else {{$grades->q1}}@endif</td>
+                            <td style="text-align: center">@if ($grades->q2 == 0) @else {{$grades->q2}}@endif</td>
+                            <td style="text-align: center">@if ($grades->q3 == 0) @else {{$grades->q3}}@endif</td>
+                            <td style="text-align: center">@if ($grades->q4 == 0) @else {{$grades->q4}}@endif</td>
                         </tr>
                         @endforeach
                     </table>

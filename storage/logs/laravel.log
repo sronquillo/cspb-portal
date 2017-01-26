@@ -6453,3 +6453,9 @@ Stack trace:
 #40 /home/sean/Projects/cspb/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #41 /home/sean/Projects/cspb/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #42 {main}  
+[2017-01-26 19:27:41] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'endforeach' (T_ENDFOREACH)' in /home/sean/Projects/cspb/storage/framework/views/ad5bbd583fab7fba0b0d28ea51a1afde7c9f0868.php:82
+Stack trace:
+#0 {main}  
+[2017-01-26 19:30:40] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'endforeach' (T_ENDFOREACH)' in /home/sean/Projects/cspb/storage/framework/views/ad5bbd583fab7fba0b0d28ea51a1afde7c9f0868.php:84
+Stack trace:
+#0 {main}  

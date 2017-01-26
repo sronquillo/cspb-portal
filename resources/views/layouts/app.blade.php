@@ -34,13 +34,26 @@
                 text-decoration: underline;
             }
 
+            @media print {
+                .col-md-11 {text-align: center}
+                .img-responsive {display: none}
+                .footer { 
+                    display: block;
+                    position:static;
+                    top:auto;
+                    right: 0;
+                    z-index: 0;
+                }
+                .btn {display: none}
+            }
+
         </style>
     </head>
 
     <body id="app-layout">
         <div class= "container-fluid" style="padding-bottom:20px">
             <div class="col-md-12">
-                <div class="col-md-1">   
+                <div class="col-md-1">
                     <img class ="img-responsive" style ="margin-top:10px;" src = "{{ asset('/images/cspblogo.png') }}" alt="CSPB" />
                 </div>
                 <div class="col-md-11" style="padding-top: 20px">
@@ -79,7 +92,7 @@
                         @if (Auth::guest())
                         <li><a href="{{ url('/') }}">My Portal</a></li>
                         {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
-                        {{-- <li><a href="{{ url('/login') }}">Login</a></li> --}}
+            {{-- <li><a href="{{ url('/login') }}">Login</a></li> --}}
                         @else
                         <!--student-->
                         @if (Auth::user()->userLevel==1)
@@ -89,7 +102,7 @@
                         @else
                         @endif
 
-                        <!--teacher-->
+           <!--teacher-->
                         @if (Auth::user()->userLevel==2)
                         <li><a href="{{ url('/announcements') }}">Announcements</a></li>
                         <li><a href="{{ url('/notifications') }}">Notifications</a></li>
@@ -97,10 +110,10 @@
                         @else
                         @endif
 
-                        <!--Acad, Registrar, Finance-->
+           <!--Acad, Registrar, Finance-->
                         @if (Auth::user()->userLevel==31 or Auth::user()->userLevel==32 or Auth::user()->userLevel==33 or Auth::user()->userLevel==34)
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Announcements <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Announcements <span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="font-size: 10pt">
                                     <li><a href="{{ url('/announcements') }}">View Announcements</a></li>
                                     <li><a href="{{ url('/create/announcements') }}">Create Announcements</a></li>
@@ -199,7 +212,7 @@
 
         <footer class="footer">
             <div class="container-fluid" style="padding-top: 20px" align="center">
-                <p class="text-muted"> &COPY; <b>2016</b> <u>Colegio de San Pascual Baylon</u> | <u>All Rights Reserved</u></p>
+                <p class="text-muted"> &COPY; <b>2017</b> <u>Colegio de San Pascual Baylon</u> | <u>All Rights Reserved</u></p>
             </div>
         </footer>
 
