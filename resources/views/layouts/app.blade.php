@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-3.3.7/dist/css/bootstrap-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-3.3.7/dist/css/bootstrap.css') }}">
-        <script src="/script/myJS.js"></script>
+        
 
         <style>
             body {
@@ -204,12 +204,12 @@
 
         @yield('content')
 
-<!--<script src="bootstrap/bootstrap-3.3.7/dist/js/jquery-1.11.0.min.js"></script>
-<script src="bootstrap/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>-->
+<!--        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+        <script src="/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>      
+        
         <footer class="footer">
             <div class="container-fluid" style="padding-top: 20px" align="center">
                 <p class="text-muted"> &COPY; <b>2017</b> <u>Colegio de San Pascual Baylon</u> | <u>All Rights Reserved</u></p>

@@ -53,7 +53,7 @@ class HomeController extends Controller {
                 ->where('announcementNotif.recipient_userLevel', '=', 0)
                 ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
-        return view('announcements', compact('announcement'));
+        return view('announcements', compact('announcement', 'is_read'));
     }
 
     public function view_announcement($anID) {
