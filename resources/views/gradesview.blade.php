@@ -73,7 +73,7 @@
                                 @if ($grades->q1 == 0 or $grades->q2 == 0 or $grades->q3 == 0 or $grades->q4 == 0)
                                 {!!$avg=null!!} 
                                 @else
-                                {!!$avg=ROUND($grades->avg)!!}
+                                {!!$avg=round($grades->avg,2)!!}
                                 @endif
                             </td>
                             <td style="text-align: center">

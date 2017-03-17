@@ -28,7 +28,17 @@
                             @foreach($announcement as $announcements)
                             <tr style="border-bottom: 1px solid #0d5302; line-height: 40px">
                                 <td width="30%"><div align="Left">{{ date('M d, Y (D) - g:i a',strtotime($announcements->created_at)) }}</div></td>
-                                <td width="40%"><div align="Left"><a href="/{{$announcements->anID}}">{{$announcements->subject}}</a></div></td>
+                                <td width="40%">
+                                    <div align="Left">
+                                        <a href="/{{$announcements->anID}}">
+                                            @if ($announcements->is_read == 0)
+                                            <b>{{$announcements->subject}}</b>
+                                            @else
+                                                {{$announcements->subject}}
+                                            @endif
+                                        </a>
+                                    </div>
+                                </td>
                                 @if (Auth::user()->userLevel==4 or Auth::user()->userLevel==51 or Auth::user()->userLevel == 52)
                                 <td width="15%"><div align="Left">{{$announcements->firstname}} {{$announcements->lastname}}</div></td>
                                 <td width="15%"><div align="Left"><a href='/approved/announcements/{{$announcements->anID}}'>Update & Approve</a></div></td>

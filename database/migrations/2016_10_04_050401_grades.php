@@ -34,6 +34,6 @@ class Grades extends Migration
      */
     public function down()
     {
-        //
+            Schema::drop('grades');
     }
 }

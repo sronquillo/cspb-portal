@@ -44,49 +44,58 @@ class HomeController extends Controller {
     }
 
     public function announcements() {
+        $user=Auth::user()->IDno;       
         $announcement = DB::table('users')
                 ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
-//                ->join('is_readTB', 'announcementNotif.anID', '=', 'is_readTB.announcementID')
+                ->join('is_readTB', 'announcementNotif.anID', '=', 'is_readTB.announcementID')
                 ->where('announcementNotif.is_approved', '=', 1)
                 ->where('announcementNotif.type', '=', 0)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.recipient_userLevel', '=', 0)
+                ->where('is_readTB.IDno', '=', $user)
                 ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
-        return view('announcements', compact('announcement', 'is_read'));
+        return view('announcements', compact('announcement', 'user'));
     }
 
     public function view_announcement($anID) {
-//        $user=Auth::user()->IDno;
+        $user=Auth::user()->IDno;
         $view_announcement = DB::table('announcementNotif')
                 ->join('users', 'users.IDno', '=', 'announcementNotif.creator_IDno')
                 ->where('announcementNotif.anID', '=', $anID)
                 ->simplePaginate(1);
-//        DB::table('is_readTB')->where ('IDno', $user)->where ('announcementID', $anID)
-//            ->update (['is_read'=>1]);
+        
+        DB::update("update is_readTB set is_read = 1 where IDno= '$user' and announcementID = $anID");
+        
         return view('view_announcement', compact('view_announcement'));
     }
 
     public function notifications() {
+        $user=Auth::user()->IDno;
         $userLevel = Auth::user()->userLevel;
         $notification = DB::table('users')
                 ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
+                ->join('is_readTB', 'announcementNotif.anID', '=', 'is_readTB.announcementID')
                 ->where('announcementNotif.is_approved', '=', 1)
                 ->where('announcementNotif.type', '=', 1)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.recipient_userLevel', '=', $userLevel)
+                ->where('is_readTB.IDno', '=', $user)
                 ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
 
-        return view('notifications', compact('notification'));
+        return view('notifications', compact('notification','user'));
     }
 
     public function allnotifications() {
+        $user=Auth::user()->IDno;
         $notification = DB::table('users')
                 ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
+                ->join('is_readTB', 'announcementNotif.anID', '=', 'is_readTB.announcementID')
                 ->where('announcementNotif.type', '=', 1)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.is_approved', '=', 1)
+                ->where('is_readTB.IDno', '=', $user)
                 ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
 
@@ -94,15 +103,47 @@ class HomeController extends Controller {
     }
 
     public function allapprovednotifications() {
+        $user=Auth::user()->IDno;
         $notification = DB::table('users')
                 ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
+                ->join('is_readTB', 'announcementNotif.anID', '=', 'is_readTB.announcementID')
                 ->where('announcementNotif.type', '=', 1)
                 ->where('announcementNotif.status', '=', 1)
                 ->where('announcementNotif.is_approved', '=', 1)
+                ->where('is_readTB.IDno', '=', $user)
                 ->orderBy('announcementNotif.created_at', 'desc')
                 ->simplePaginate(20);
 
         return view('update_notifications', compact('notification'));
+    }
+    
+    public function pending_announcement() {
+        $user=Auth::user()->IDno;
+        $announcement = DB::table('users')
+                ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
+                ->join('is_readTB', 'announcementNotif.anID', '=', 'is_readTB.announcementID')
+                ->where('announcementNotif.is_approved', '=', 0)
+                ->where('announcementNotif.type', '=', 0)
+                ->where('announcementNotif.status', '=', 1)
+                ->where('announcementNotif.recipient_userLevel', '=', 0)
+                ->where('is_readTB.IDno', '=', $user)
+                ->orderBy('announcementNotif.created_at', 'desc')
+                ->simplePaginate(20);
+        return view('pending_announcement', compact('announcement'));
+    }
+
+    public function pending_notification() {
+        $user=Auth::user()->IDno;
+        $notification = DB::table('users')
+                ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
+                ->join('is_readTB', 'announcementNotif.anID', '=', 'is_readTB.announcementID')
+                ->where('announcementNotif.is_approved', '=', 0)
+                ->where('announcementNotif.type', '=', 1)
+                ->where('announcementNotif.status', '=', 1)
+                ->where('is_readTB.IDno', '=', $user)
+                ->orderBy('announcementNotif.created_at', 'desc')
+                ->simplePaginate(20);
+        return view('pending_notification', compact('notification'));
     }
 
     public function grades() {
@@ -221,7 +262,7 @@ class HomeController extends Controller {
     }
 
     public function submit() {
-
+//submit announcement and notifications
 
         $target_dir = "upload-images/";
         $filename = basename($_FILES["fileToUpload"]["name"]);
@@ -238,7 +279,7 @@ class HomeController extends Controller {
 
         $creator_IDno = Auth::user()->IDno;
 
-        DB::table('announcementNotif')->insertGetId([
+        $insert = DB::table('announcementNotif')->insertGetId([
             'creator_IDno' => $creator_IDno,
             'recipient_userLevel' => $recipient,
             'subject' => $subject,
@@ -249,6 +290,8 @@ class HomeController extends Controller {
             'type' => $type,
             'created_at' => date('Y-m-d H:i:s')
         ]);
+        
+        DB::insert("INSERT INTO is_readTB ( announcementID, IDno, is_read, type ) (SELECT '$insert',IDno, '0', '$type' FROM users)");
 
         // Check if image file is a actual image or fake image
         if (isset($_POST["submit"])) {
@@ -427,29 +470,6 @@ class HomeController extends Controller {
         return redirect()->action($action);
     }
 
-    public function pending_announcement() {
-        $announcement = DB::table('users')
-                ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
-                ->where('announcementNotif.is_approved', '=', 0)
-                ->where('announcementNotif.type', '=', 0)
-                ->where('announcementNotif.status', '=', 1)
-                ->where('announcementNotif.recipient_userLevel', '=', 0)
-                ->orderBy('announcementNotif.created_at', 'desc')
-                ->simplePaginate(20);
-        return view('pending_announcement', compact('announcement'));
-    }
-
-    public function pending_notification() {
-        $notification = DB::table('users')
-                ->join('announcementNotif', 'users.IDno', '=', 'announcementNotif.creator_IDno')
-                ->where('announcementNotif.is_approved', '=', 0)
-                ->where('announcementNotif.type', '=', 1)
-                ->where('announcementNotif.status', '=', 1)
-                ->orderBy('announcementNotif.created_at', 'desc')
-                ->simplePaginate(20);
-        return view('pending_notification', compact('notification'));
-    }
-
     public function confirmModifyGrades() {
 
         $IDno = $_POST['IDno'];
@@ -548,4 +568,15 @@ class HomeController extends Controller {
                     'contactno' => $x_contactno]);
         return redirect()->back();
     }
+    
+//    public function getannouncements() {
+//
+//        $user=Auth::user()->IDno;
+//        $result = DB::table('is_readTB')->count()
+//                ->where('type', '=', '1')
+//                ->where('IDno', '=', $user)
+//                ->where('is_read', '=', '0');
+//        
+//        return view('layouts.app', compact('result'));
+//    }
 }

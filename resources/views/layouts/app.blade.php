@@ -13,7 +13,6 @@
 
         <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-3.3.7/dist/css/bootstrap-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-3.3.7/dist/css/bootstrap.css') }}">
-        
 
         <style>
             body {
@@ -62,7 +61,7 @@
                     Pag-asa, Obando, Bulacan
                     <br>
                     Tel No: 292-4534
-                </div>   
+                </div>
             </div>
         </div>
         <nav class="navbar navbar-default navbar-static-top">
@@ -92,7 +91,7 @@
                         @if (Auth::guest())
                         <li><a href="{{ url('/') }}">My Portal</a></li>
                         {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
-            {{-- <li><a href="{{ url('/login') }}">Login</a></li> --}}
+                        {{-- <li><a href="{{ url('/login') }}">Login</a></li> --}}
                         @else
                         <!--student-->
                         @if (Auth::user()->userLevel==1)
@@ -102,7 +101,7 @@
                         @else
                         @endif
 
-           <!--teacher-->
+                        <!--teacher-->
                         @if (Auth::user()->userLevel==2)
                         <li><a href="{{ url('/announcements') }}">Announcements</a></li>
                         <li><a href="{{ url('/notifications') }}">Notifications</a></li>
@@ -110,10 +109,10 @@
                         @else
                         @endif
 
-           <!--Acad, Registrar, Finance-->
+                        <!--Acad, Registrar, Finance-->
                         @if (Auth::user()->userLevel==31 or Auth::user()->userLevel==32 or Auth::user()->userLevel==33 or Auth::user()->userLevel==34)
                         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Announcements <span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Announcements <span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="font-size: 10pt">
                                     <li><a href="{{ url('/announcements') }}">View Announcements</a></li>
                                     <li><a href="{{ url('/create/announcements') }}">Create Announcements</a></li>
@@ -167,7 +166,8 @@
                             <!--Principal, Rector-->
                             @if (Auth::user()->userLevel==51 or Auth::user()->userLevel==52)
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Announcements <span class="caret"></span>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Announcements <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" style="font-size: 10pt">
                                     <li><a href="{{ url('/announcements') }}">View Announcements</a></li>
@@ -209,7 +209,7 @@
 
         <script src="/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>      
-        
+
         <footer class="footer">
             <div class="container-fluid" style="padding-top: 20px" align="center">
                 <p class="text-muted"> &COPY; <b>2017</b> <u>Colegio de San Pascual Baylon</u> | <u>All Rights Reserved</u></p>

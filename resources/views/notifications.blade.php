@@ -24,7 +24,17 @@
                             @foreach($notification as $notifications)
                             <tr style="border-bottom: 1px solid #0d5302; line-height: 40px">
                                 <td width="30%"><div align="Left">{{ date('M d, Y (D) - g:i a',strtotime($notifications->created_at)) }}</div></td>
-                                <td width="40%"><div align="Left"><a href="{{$notifications->anID}}">{{$notifications->subject}}</a></div></td>
+                                <td width="40%">
+                                    <div align="Left">
+                                        <a href="{{$notifications->anID}}">
+                                            @if ($notifications->is_read == 0)
+                                            <b>{{$notifications->subject}}</b>
+                                            @else
+                                                {{$notifications->subject}}
+                                            @endif
+                                        </a>
+                                    </div>
+                                </td>
                                 <td width="30%"><div align="Left">{{$notifications->firstname}} {{$notifications->lastname}}</div></td>
                             </tr>
                             @endforeach

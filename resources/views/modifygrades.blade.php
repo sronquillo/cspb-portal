@@ -91,12 +91,22 @@
                                 <td style="text-align: center">@if ($grades->is_approved==1)<input class='form-control' type='text' value='{{$grades->q2}}' name='q2' disabled> @else<input class='form-control' type='text' value='{{$grades->q2}}' name='q2'>@endif</td>
                                 <td style="text-align: center">@if ($grades->is_approved==1)<input class='form-control' type='text' value='{{$grades->q3}}' name='q3' disabled> @else<input class='form-control' type='text' value='{{$grades->q3}}' name='q3'>@endif</td>
                                 <td style="text-align: center">@if ($grades->is_approved==1)<input class='form-control' type='text' value='{{$grades->q4}}' name='q4' disabled> @else<input class='form-control' type='text' value='{{$grades->q4}}' name='q4'>@endif</td>
-                                <td style="text-align: center">{!!$avg=ROUND($grades->avg)!!}</td>
                                 <td style="text-align: center">
-                                    @if (($avg)>=75) Passed
-                                    @else Failed
-                                    @endif
-                                </td>
+                                @if ($grades->q1 == 0 or $grades->q2 == 0 or $grades->q3 == 0 or $grades->q4 == 0)
+                                {!!$avg=null!!} 
+                                @else
+                                {!!$avg=round($grades->avg,2)!!}
+                                @endif
+                            </td>
+                            <td style="text-align: center">
+                                @if (($avg)==null)
+                                @else
+                                @if (($avg)>=75) Passed
+                                @else Failed
+                                @endif
+                                @endif
+
+                            </td>
                                 <td style="text-align:center">
                                     @if ($grades->is_approved==1)
                                         <button class="btn btn-default" type='submit' formaction="{{ url('/confirm/modify')}}" disabled>Modify</button>

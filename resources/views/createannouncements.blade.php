@@ -39,7 +39,11 @@
                                     </div>
                                 </div>
 
+                                @if (Auth::user()->userLevel == 51 or Auth::user()->userLevel == 52)
+                                <input id="is_approved" type="hidden" class="form-control" name="is_approved" value="1">
+                                @else
                                 <input id="is_approved" type="hidden" class="form-control" name="is_approved" value="0">
+                                @endif
                                 <input id="status" type="hidden" class="form-control" name="status" value="1">
                                 <input id="type" type="hidden" class="form-control" name="type" value="0">
                                 <input id="action" type="hidden" class="form-control" name="action" value="HomeController@announcements">
